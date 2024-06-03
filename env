@@ -1,0 +1,12 @@
+PORT=9090
+DBNAME="db_goapi"
+DBUSER="root"
+DBPASSWORD=""
+DB_URL="${DBUSER}:${DBPASSWORD}@tcp(127.0.0.1:3306)/${DBNAME}?charset=utf8mb4&parseTime=True&loc=Local"
+SALT1="alksjdlAJDQLIOWJDQLWJDLQ1"
+SALT2="ALKJSD21AJSDLK275DLKAJSDL"
+SECRET_KEY="${SALT1}EleocharisParvulaGlossostigmaElationades${SALT2}"
+
+
+
+

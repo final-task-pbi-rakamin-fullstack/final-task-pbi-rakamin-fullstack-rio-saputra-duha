@@ -1,0 +1,135 @@
+openapi: 3.1.0
+info:
+  title: Go Rest API
+  description: |-
+    This is a API for Golang Internship project, The project is bsic CRUD using a Golang. 
+    the CRUD is User can be Login and Register with JWT Authentication. The user can upload photos (URL) and save it in Database
+    
+    created by Rafly Andrian
+
+  version: 1.0.0
+  license: Created By Rafly Andrian
+
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+servers:
+  - url: https://petstore3.swagger.io/api/v3
+tags:
+
+  - name: user
+    description: Operations about user
+  - name: photos
+    description: Everything about your Pets
+    externalDocs:
+      description: Find out more
+      url: http://swagger.io
+paths:
+  /users/register:
+    post:
+      tags:
+        - user
+      summary: Create user
+      description: User register from here
+      operationId: createUser
+
+  /users/login:
+    get:
+      tags:
+        - user
+      summary: Logs user into the system
+      description: ''
+      operationId: loginUser
+      parameters:
+        - name: username
+          in: query
+          description: The user name for login
+          required: false
+          schema:
+            type: string
+        - name: password
+          in: query
+          description: The password for login in clear text
+          required: false
+          schema:
+            type: string
+  /users/logout:
+    get:
+      tags:
+        - user
+      summary: Logs out current logged in user session
+      description: ''
+      parameters: []
+      responses:
+        default:
+          description: successful operation
+  /users/{userid}:
+    put:
+      tags:
+        - user
+      summary: Update user
+      description: This can only be done by the logged in user.
+      parameters:
+        - name: userid
+          in: path
+          description: name that need to be deleted
+          required: true
+          schema:
+            type: string
+  /users/delete/{userid}:
+    delete:
+      tags:
+        - user
+      summary: Delete user
+      description: This can only be done by the logged in user.
+      parameters:
+        - name: userid
+          in: path
+          description: The name that needs to be deleted
+          required: true
+          schema:
+            type: string
+      responses:
+        '400':
+          description: Invalid username supplied
+        '404':
+          description: User not found
+  /photos/add:
+    post:
+      tags:
+        - photos
+      summary: Add a new photos
+      description: Add a new photos
+      operationId: addPhotos
+  /photos:
+    get:
+      tags:
+        - photos
+      summary: Display all photos
+      description: display a photo
+  /photos/edit/{photoId}:
+    put:
+      tags:
+        - photos
+      summary: Edit uploaded photos
+      description: edit uploaded photos
+      parameters:
+        - name: photoId
+          in: path
+          description: The id that needs to be deleted
+          required: true
+          schema:
+            type: string
+  /photos/delete/{photoId}:
+    delete:
+      tags:
+        - photos
+      summary: delete existing photo
+      description: delete existing photo
+      parameters:
+        - name: photoId
+          in: path
+          description: The id that needs to be deleted
+          required: true
+          schema:
+            type: string
